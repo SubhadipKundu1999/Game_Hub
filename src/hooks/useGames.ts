@@ -13,7 +13,8 @@ import { CanceledError } from 'axios';
     name: string,
     id: number,
     background_image: String
-    parent_platforms: {platform:Platform}[]
+    parent_platforms: {platform:Platform}[],
+    metacritic:number
 }
 
 interface fetchGamesREsponse {

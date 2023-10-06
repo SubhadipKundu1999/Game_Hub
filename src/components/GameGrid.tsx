@@ -9,9 +9,12 @@ const {games, error} = useGames();
 
   return (
 
-<SimpleGrid columns={
-  {sm:1, md:3, lg:5}
-} spacing={10}>
+<SimpleGrid columns ={
+  {sm:1, md:2, lg:3}}
+ spacing={10}
+ padding={'40px'}
+
+>
 {games.map((game)=> <GameCard key={game.id} game={game}></GameCard>)
       }
 </SimpleGrid>
