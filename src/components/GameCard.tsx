@@ -2,6 +2,8 @@ import { Card, CardBody, CardFooter, CardHeader, HStack, Heading, Image, Text } 
 import { Game } from "../hooks/useGames"
 import PlatformList from "./PlatformList"
 import CriticScore from "./CriticScore"
+import getCroppedImageUrl from "../services/image-url"
+import CardContainer from "./CardContainer"
 
 interface Props{
   game: Game
@@ -9,9 +11,9 @@ interface Props{
 
 function GameCard({game}:Props) {
   return (
-   <Card overflow={'hidden'}>
-
-    <Image src={game.background_image} w={'100%'} />
+   <CardContainer>
+<Card>
+    <Image src={getCroppedImageUrl(game.background_image)} w={'100%'} />
    
     <CardBody>
 
@@ -25,7 +27,9 @@ function GameCard({game}:Props) {
       </HStack>
 
     </CardBody>
-   </Card>
+
+    </Card>
+   </CardContainer>
   )
 }
  

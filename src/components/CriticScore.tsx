@@ -13,7 +13,7 @@ const color =  criticScore > 75 ? 'green' : criticScore > 60 ? 'yellow' :   'red
   return (
     <Badge colorScheme={color} fontSize={'xl'}>
        {criticScore}
-      </Badge>9
+      </Badge>
   )
 }
 
