@@ -8,7 +8,7 @@ import React, { ReactNode } from 'react'
   function CardContainer({children}:Props) {
     return (
 
-     <Box width={{lg:'300px',}} overflow={'hidden'}>
+     <Box overflow={'hidden'}>
         {children}
      </Box>
     )

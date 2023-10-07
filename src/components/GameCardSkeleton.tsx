@@ -5,17 +5,16 @@ import CardContainer from './CardContainer'
 function GameCardSkeleton() {
   return (
     <CardContainer>
-    <Card>
-
+    <Card >
     <Skeleton height={'200px'} />
-    <CardBody>
+
+    <CardBody >
     
         <SkeletonText />
         <SkeletonText />
-
-      
-     <Skeleton/>
+        <Skeleton/>
     </CardBody>
+
    </Card>
    </CardContainer>
   )
