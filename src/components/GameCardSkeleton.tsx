@@ -8,13 +8,13 @@ function GameCardSkeleton() {
     <Card >
     <Skeleton height={'200px'} />
 
+
     <CardBody >
-    
         <SkeletonText />
         <SkeletonText />
         <Skeleton/>
     </CardBody>
-
+     
    </Card>
    </CardContainer>
   )

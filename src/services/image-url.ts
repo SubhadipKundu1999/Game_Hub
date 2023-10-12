@@ -2,6 +2,7 @@
 
 
 export default function getCroppedImageUrl(imageUrl:String){
+    if(!imageUrl) return null;
 
     const target= 'media/'
     const index = imageUrl.indexOf(target) + target.length;
