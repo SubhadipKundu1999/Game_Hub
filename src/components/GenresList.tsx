@@ -14,11 +14,19 @@ interface Props{
 function GenresList({onSelectGenre, selectedGenre}:Props) {
 
     const {data, error, isLoading} = useGenres();
+    if(error){
+      console.log(error);
+      return(
+      <>
+      <h1 style={{color:'red'}}>{error}</h1>
+      </>
+      )
+    }
 
   return (
     <>
     <Heading marginBottom={'20px'} fontSize={'3xl'}> Genres</Heading>
-    {isLoading? <Spinner
+    {isLoading || error? <Spinner
   thickness='2px'
   speed='0.65s'
   emptyColor='gray.200'
@@ -30,7 +38,7 @@ function GenresList({onSelectGenre, selectedGenre}:Props) {
     data.map((genre)=> <ListItem key={genre.id} >
          <HStack>
       <Image src={getCroppedImageUrl (genre.image_background)} objectFit={'cover'} boxSize={genre.id === selectedGenre?.id?'45px': '42px'} borderRadius={'5'}/>
-      <Button  textAlign={'left'} fontWeight={genre.id === selectedGenre?.id?'extrabold':'normal' } whiteSpace='normal'  fontSize={'xl'}  variant={'link'} onClick = {()=>onSelectGenre(genre)}  >{genre.name}</Button>
+      <Button  textAlign={'left'} fontWeight={genre.id === selectedGenre?.id?'extrabold':'normal' } whiteSpace='normal'  fontSize={'xl'}  variant={'link'} onClick = {()=>onSelectGenre(genre)} >{genre.name}</Button>
     </HStack>
       </ListItem>)}
 </List>

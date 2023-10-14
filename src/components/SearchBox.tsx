@@ -23,7 +23,7 @@ function SearchBox({onSearch}: Props) {
    placeholder='Search'
    ref={ref}
 borderRadius={'20px'}
-backgroundColor='gray.700'
+
  
   
       

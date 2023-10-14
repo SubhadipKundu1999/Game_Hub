@@ -4,6 +4,7 @@ import PlatformList from "./PlatformList"
 import CriticScore from "./CriticScore"
 import getCroppedImageUrl from "../services/image-url"
 import CardContainer from "./CardContainer"
+import Emoji from "./Emoji"
 
 interface Props{
   game: Game
@@ -12,12 +13,12 @@ interface Props{
 function GameCard({game}:Props) {
   return (
    <CardContainer>
-<Card>
+<Card borderRadius={'10px'} overflow={'hidden'}>
     <Image src={getCroppedImageUrl(game.background_image)} w={'100%'} />
    
     <CardBody>
 
-      <Heading fontSize={'2xl'}>{game.name}</Heading>
+    
 
       <HStack justifyContent={'space-between'} marginY={'10px'}>
 
@@ -25,7 +26,10 @@ function GameCard({game}:Props) {
       <CriticScore criticScore= {game.metacritic}/>
 
       </HStack>
-
+      <Heading  marginTop={'30px'} fontSize={'2xl'}>{game.name}
+      <Emoji rating={game.rating_top}/>
+      </Heading>
+      
     </CardBody>
 
     </Card>
