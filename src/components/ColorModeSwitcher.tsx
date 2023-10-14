@@ -6,7 +6,7 @@ function ColorModeSwitcher() {
   return (
     <HStack>
         <Switch onChange={toggleColorMode} isChecked={colorMode==='dark'} />
-        <Text whiteSpace={'nowrap'} > Color Mode</Text>
+        <Text whiteSpace={'nowrap'}  display={{ lg:'block', md:'none', sm:'none'}}> Color Mode</Text>
     </HStack>
   )
 }
