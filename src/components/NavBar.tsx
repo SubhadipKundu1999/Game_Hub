@@ -1,24 +1,33 @@
 import React from 'react'
-import {HStack, Image, Text} from '@chakra-ui/react'
+import {Flex, HStack, Image, Input, Text} from '@chakra-ui/react'
 import logo from "../assets/logo.png"
 import ColorModeSwitcher from './ColorModeSwitcher'
-function NavBar() {
+import SearchBox from './SearchBox'
+interface Props{
+  onSearch:(searchText:string)=>void;
+}
+
+
+function NavBar({onSearch}:Props) {
   return (
-<HStack p={2} justifyContent={'space-between'}>
-  <HStack>
+<Flex p={'4'} justifyContent={'space-between'} gap={'20px'}>  
+<HStack>
   <Image 
 src={logo} 
 alt="Logo"
 boxSize='50px'
 borderRadius='10'
-
 />
-<Text  fontSize='xl' fontWeight='bold' > GAME HUB</Text>
-
+<Text  whiteSpace={'nowrap'} fontSize='xl' fontWeight='bold' > GAME HUB</Text>
   </HStack>
-
+  <HStack flex={1}>
+  <SearchBox onSearch={onSearch}/>
+  </HStack>
+<HStack>
 <ColorModeSwitcher/>
 </HStack>
+
+</Flex>
   )
 }
 
