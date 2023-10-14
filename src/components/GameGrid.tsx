@@ -26,11 +26,7 @@ if(error){
   </>
   )
 }
-if(data.length==0){
-  return(
-    <Text marginTop={"40px"} textAlign={'center'}>No result found</Text>
-  )
-}
+
 
   return (
 
