@@ -18,7 +18,7 @@ alt="Logo"
 boxSize='50px'
 borderRadius='10'
 />
-<Text  whiteSpace={'nowrap'} fontSize='xl' fontWeight='bold' display={{ lg:'block', md:'none', sm:'none'}}> GAME HUB</Text>
+<Text  whiteSpace={'nowrap'} fontSize='xl' fontWeight='bold' display={{ lg:'block', md:'none', sm:'none', base:'none'}}> GAME HUB</Text>
 
   </HStack>
   <HStack flex={1}>
