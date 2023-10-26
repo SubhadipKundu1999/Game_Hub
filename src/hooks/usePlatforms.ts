@@ -9,9 +9,6 @@ const apiClient = new APIClient<Platform>("/platforms/lists/parents");
     slug:string
  }
 
-// const usePlatforms = (selectedPlatform:Platform | null)=> useData<Platform>("/platforms/lists/parents")
-
-
 const  usePlatforms =(selectedPlatform:Platform | null)=>
  useQuery<fetchData<Platform>, Error>({
 

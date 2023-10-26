@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import APIClient, {fetchData }  from '../api-client';
 import { Platform } from './usePlatforms';
@@ -10,15 +10,16 @@ const apiClient = new APIClient<Game>("/games")
     background_image: String
     parent_platforms: {platform:Platform}[],
     metacritic:number,
-    rating_top:number
+    rating_top:number,
+    page:number
 }
 const useGames=(gameQuery:GameQuery)=>
 
-useQuery<fetchData<Game>, Error>({
+useInfiniteQuery<fetchData<Game>, Error>({
 
    queryKey:['games',gameQuery],
 
-   queryFn: ()=>
+   queryFn: ({pageParam=1})=>
      apiClient.getAll({
 
       params:
@@ -26,9 +27,14 @@ useQuery<fetchData<Game>, Error>({
        genres:gameQuery.genre?.id,
        parent_platforms:gameQuery.platform?.id,
        ordering:gameQuery.sortOrder,
-       search:gameQuery.searchText
+       search:gameQuery.searchText,
+       page:pageParam
       }
-   })
+   }),
+   getNextPageParam:(lastPage, allPages)=>{
+
+       return lastPage.next? allPages.length+1: undefined
+   }
 
 })
 
