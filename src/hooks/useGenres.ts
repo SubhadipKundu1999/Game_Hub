@@ -22,7 +22,7 @@ const useGenres = () =>
 
         queryFn:apiClient.getAll, 
 
-        // initialData :{ count:staticGenreData.length, results: staticGenreData},
+        initialData :staticGenreData,
 
         staleTime: 24*60*60*1000,
 
