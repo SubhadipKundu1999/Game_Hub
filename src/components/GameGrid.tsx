@@ -16,13 +16,13 @@ interface Props{
 
 function GameGrid({gameQuery}:Props) {
 
-const {data, error:error,isLoading} = useGames(gameQuery);
+const {data, error,isLoading} = useGames(gameQuery);
 
 if(error){
   console.log(error);
   return(
   <>
-  <h1 style={{color:'red'}}>{error}</h1>
+  <h1 style={{color:'red'}}>{error.message}</h1>
   </>
   )
 }
@@ -36,7 +36,7 @@ if(error){
 >
   {isLoading || error?
   (<>{Skeleton.map(s=> <GameCardSkeleton key={s} /> )}</>) :''}
-{data.map((game)=> <GameCard key={game.id} game={game}></GameCard>)
+{data?.results.map((game)=> <GameCard key={game.id} game={game}></GameCard>)
       }
 </SimpleGrid>
 

@@ -11,6 +11,7 @@ interface Props{
 
 function PlatformSelector({onSelectPlatform, selectedPlatform }:Props) {
 const {data, error} = usePlatforms(selectedPlatform);
+  console.log(data);
 
   if(error) return null;
 
@@ -22,7 +23,7 @@ const {data, error} = usePlatforms(selectedPlatform);
         </MenuButton>
 <MenuList>
   <MenuItem  onClick={()=>onSelectPlatform ({} as Platform)} color={'red'}> clear</MenuItem>
-  {data?.map((platform)=> <MenuItem key={platform.id} onClick={()=> onSelectPlatform(platform)}> <HStack><Text>{platform.name}</Text>{platform.id===selectedPlatform?.id?<FcCheckmark  fontSize={'20px'}/>:''}</HStack></MenuItem>)}
+  {data?.results?.map((platform)=> <MenuItem key={platform.id} onClick={()=> onSelectPlatform(platform)}> <HStack><Text>{platform.name}</Text>{platform.id===selectedPlatform?.id?<FcCheckmark  fontSize={'20px'}/>:''}</HStack></MenuItem>)}
 
 </MenuList>
     </Menu>
