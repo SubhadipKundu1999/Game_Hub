@@ -9,14 +9,12 @@ const apiClient = new APIClient<Platform>("/platforms/lists/parents");
     slug:string
  }
 
-const  usePlatforms =(selectedPlatform:Platform | null)=>
+const  usePlatforms =()=>
  useQuery<fetchData<Platform>, Error>({
 
  queryKey:['platforms'],
  queryFn:
-   apiClient.getAll
-
-
+   apiClient.getAll,
 })
 
 export default usePlatforms;

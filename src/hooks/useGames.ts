@@ -24,8 +24,8 @@ useInfiniteQuery<fetchData<Game>, Error>({
 
       params:
       {
-       genres:gameQuery.genre?.id,
-       parent_platforms:gameQuery.platform?.id,
+       genres:gameQuery.genre,
+       parent_platforms:gameQuery.platform,
        ordering:gameQuery.sortOrder,
        search:gameQuery.searchText,
        page:pageParam
@@ -35,7 +35,7 @@ useInfiniteQuery<fetchData<Game>, Error>({
 
        return lastPage.next? allPages.length+1: undefined
    },
-   staleTime:24*60*60*10009
+   staleTime:24*60*60*1000
 
 })
 

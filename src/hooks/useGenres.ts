@@ -11,7 +11,7 @@ export interface Genre {
     image_background: string
 }
 
-
+console.log(staticGenreData);
 const apiClient = new APIClient<Genre>("/genres");
 
 const useGenres = () =>
@@ -19,9 +19,14 @@ const useGenres = () =>
     useQuery<fetchData<Genre>, Error>({
 
         queryKey: ['genres'],
+
         queryFn:apiClient.getAll, 
+
+        // initialData :{ count:staticGenreData.length, results: staticGenreData},
+
         staleTime: 24*60*60*1000,
-        initialData: {count:staticGenreData.length, results:staticGenreData}        
+
+     
     }
     )
 

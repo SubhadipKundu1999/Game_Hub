@@ -2,16 +2,17 @@ import { Box, Button, HStack, Menu, MenuButton, MenuItem, MenuList, Text } from 
 
 import { AiOutlineCaretDown } from 'react-icons/ai'
 import usePlatforms from '../hooks/usePlatforms';
-import { Platform } from '../hooks/usePlatforms';
+
 import {FcCheckmark} from 'react-icons/fc'
 interface Props{
-  onSelectPlatform: (platform: Platform) => void,
-  selectedPlatform: Platform  | null
+  onSelectPlatform: (platform: number) => void,
+  selectedPlatformId?: number
 }
 
-function PlatformSelector({onSelectPlatform, selectedPlatform }:Props) {
-const {data, error} = usePlatforms(selectedPlatform);
+function PlatformSelector({onSelectPlatform, selectedPlatformId: selectedPlatform }:Props) {
+const {data, error} = usePlatforms();
   console.log(data);
+ const  sel_platform = (data?.results?.find((element)=> element.id===selectedPlatform))
 
   if(error) return null;
 
@@ -19,11 +20,18 @@ const {data, error} = usePlatforms(selectedPlatform);
     <Box marginBottom={'20px'}>
     <Menu >
         <MenuButton as={Button} rightIcon={<AiOutlineCaretDown/>}>
-            {selectedPlatform?.name || 'Platforms'}
+
+{sel_platform?.name || 'Platforms'}
+
         </MenuButton>
 <MenuList>
-  <MenuItem  onClick={()=>onSelectPlatform ({} as Platform)} color={'red'}> clear</MenuItem>
-  {data?.results?.map((platform)=> <MenuItem key={platform.id} onClick={()=> onSelectPlatform(platform)}> <HStack><Text>{platform.name}</Text>{platform.id===selectedPlatform?.id?<FcCheckmark  fontSize={'20px'}/>:''}</HStack></MenuItem>)}
+  {/* <MenuItem  onClick={()=>onSelectPlatform(null)} color={'red'}> clear</MenuItem> */}
+  {data?.results?.map((platform)=>
+   <MenuItem key={platform.id} onClick={()=> onSelectPlatform(platform.id)}>
+     <HStack>
+      <Text>{platform.name}</Text>{platform.id === selectedPlatform ? <FcCheckmark  fontSize={'20px'}/>:''}
+     </HStack>
+     </MenuItem>)}
 
 </MenuList>
     </Menu>
