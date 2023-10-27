@@ -4,15 +4,16 @@ import { AiOutlineCaretDown } from 'react-icons/ai'
 import usePlatforms from '../hooks/usePlatforms';
 
 import {FcCheckmark} from 'react-icons/fc'
+import usePlatform from '../hooks/usePlatform';
 interface Props{
   onSelectPlatform: (platform: number) => void,
   selectedPlatformId?: number
 }
 
-function PlatformSelector({onSelectPlatform, selectedPlatformId: selectedPlatform }:Props) {
+function PlatformSelector({onSelectPlatform, selectedPlatformId: selectedPlatformId }:Props) {
 const {data, error} = usePlatforms();
   console.log(data);
- const  sel_platform = (data?.results?.find((element)=> element.id===selectedPlatform))
+ const  sel_platform =usePlatform(selectedPlatformId)
 
   if(error) return null;
 
@@ -29,7 +30,7 @@ const {data, error} = usePlatforms();
   {data?.results?.map((platform)=>
    <MenuItem key={platform.id} onClick={()=> onSelectPlatform(platform.id)}>
      <HStack>
-      <Text>{platform.name}</Text>{platform.id === selectedPlatform ? <FcCheckmark  fontSize={'20px'}/>:''}
+      <Text>{platform.name}</Text>{platform.id === selectedPlatformId? <FcCheckmark  fontSize={'20px'}/>:''}
      </HStack>
      </MenuItem>)}
 
