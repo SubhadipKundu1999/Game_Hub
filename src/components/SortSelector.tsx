@@ -1,12 +1,14 @@
 import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { AiOutlineCaretDown } from 'react-icons/ai'
+import useGameQueryStore from '../strores/gameQueryStore';
 
-interface Props{
-    onSelectSortOrder:(sortOrder:string)=>void;
-    sortOrder:string
-}
 
-function SortSelector({onSelectSortOrder, sortOrder}:Props) {
+
+function SortSelector() {
+
+  const selectedSortOrder = useGameQueryStore(store=> store.gameQuery.sortOrder)
+  const selectSortOrder = useGameQueryStore(store=> store.selectSortOrder)
+
 
 const sortOrders=[
     {value:'', label:'Relevance'},
@@ -16,7 +18,7 @@ const sortOrders=[
     {value:'-metacritic', label:'Popularity'},
     {value:'-rating', label:'Average rating'}
 ]
-const currentSortedOrder= sortOrders.find((order)=> order.value===sortOrder);
+const currentSortedOrder= sortOrders.find((order)=> order.value=== selectedSortOrder);
 
 
   return (
@@ -26,7 +28,7 @@ const currentSortedOrder= sortOrders.find((order)=> order.value===sortOrder);
            Order By: {currentSortedOrder?.label}
         </MenuButton>
 <MenuList>
-    {sortOrders.map((order)=><MenuItem key={order.value} onClick={()=>onSelectSortOrder(order.value)}>{order.label}</MenuItem>)}
+    {sortOrders.map((order)=><MenuItem key={order.value} onClick={()=>selectSortOrder(order.value)}>{order.label}</MenuItem>)}
  
 
 </MenuList>

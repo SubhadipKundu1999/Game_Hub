@@ -3,12 +3,9 @@ import {Flex, HStack, Image, Input, Text} from '@chakra-ui/react'
 import logo from "../assets/logo.png"
 import ColorModeSwitcher from './ColorModeSwitcher'
 import SearchBox from './SearchBox'
-interface Props{
-  onSearch:(searchText:string)=>void;
-}
 
+function NavBar() {
 
-function NavBar({onSearch}:Props) {
   return (
 <Flex p={'4'} justifyContent={'space-between'} gap={'20px'}>  
 <HStack>
@@ -22,7 +19,7 @@ borderRadius='10'
 
   </HStack>
   <HStack flex={1}>
-  <SearchBox onSearch={onSearch}/>
+  <SearchBox/>
   </HStack>
 <HStack>
 <ColorModeSwitcher/>

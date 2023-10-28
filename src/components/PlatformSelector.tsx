@@ -5,15 +5,15 @@ import usePlatforms from '../hooks/usePlatforms';
 
 import {FcCheckmark} from 'react-icons/fc'
 import usePlatform from '../hooks/usePlatform';
-interface Props{
-  onSelectPlatform: (platform: number) => void,
-  selectedPlatformId?: number
-}
+import useGameQueryStore from '../strores/gameQueryStore';
 
-function PlatformSelector({onSelectPlatform, selectedPlatformId: selectedPlatformId }:Props) {
+function PlatformSelector() {
+
+  const selectPlatform = useGameQueryStore(store=> store.selectPlatform)
+
 const {data, error} = usePlatforms();
-  console.log(data);
- const  sel_platform =usePlatform(selectedPlatformId)
+
+ const  sel_platform =usePlatform()
 
   if(error) return null;
 
@@ -28,9 +28,9 @@ const {data, error} = usePlatforms();
 <MenuList>
   {/* <MenuItem  onClick={()=>onSelectPlatform(null)} color={'red'}> clear</MenuItem> */}
   {data?.results?.map((platform)=>
-   <MenuItem key={platform.id} onClick={()=> onSelectPlatform(platform.id)}>
+   <MenuItem key={platform.id} onClick={()=> selectPlatform(platform.id)}>
      <HStack>
-      <Text>{platform.name}</Text>{platform.id === selectedPlatformId? <FcCheckmark  fontSize={'20px'}/>:''}
+      <Text>{platform.name}</Text>{platform.id === sel_platform?.id? <FcCheckmark  fontSize={'20px'}/>:''}
      </HStack>
      </MenuItem>)}
 

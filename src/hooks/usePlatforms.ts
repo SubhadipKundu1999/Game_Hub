@@ -3,6 +3,8 @@ import APIClient, { fetchData } from '../api-client';
 
 
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");
+
+
  export interface Platform{
     id:number,
     name:string,
@@ -10,6 +12,7 @@ const apiClient = new APIClient<Platform>("/platforms/lists/parents");
  }
 
 const  usePlatforms =()=>
+
  useQuery<fetchData<Platform>, Error>({
 
  queryKey:['platforms'],

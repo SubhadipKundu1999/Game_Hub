@@ -12,6 +12,7 @@ export interface Genre {
 }
 
 console.log(staticGenreData);
+
 const apiClient = new APIClient<Genre>("/genres");
 
 const useGenres = () =>
@@ -25,7 +26,6 @@ const useGenres = () =>
         initialData :staticGenreData,
 
         staleTime: 24*60*60*1000,
-
      
     }
     )

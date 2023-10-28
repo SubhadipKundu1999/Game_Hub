@@ -2,18 +2,19 @@ import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
 
 import React, { useRef } from 'react'
 import {AiOutlineSearch} from 'react-icons/ai'
+import useGameQueryStore from '../strores/gameQueryStore';
 
 
 
-interface Props{
-  onSearch:(searchText:string)=>void;
-}
-function SearchBox({onSearch}: Props) {
+function SearchBox() {
+
+  const searchGame = useGameQueryStore(store=> store.searchGame)
+
  const ref = useRef<HTMLInputElement>(null);
   return (
     <form style={{width:'100%'}} onSubmit={(event)=>{
       event.preventDefault();
-      if(ref.current) onSearch(ref.current.value)
+      if(ref.current) searchGame(ref.current.value)
     }}>
 <InputGroup variant='filled'>
     <InputLeftElement pointerEvents='none' >

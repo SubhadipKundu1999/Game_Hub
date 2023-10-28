@@ -2,23 +2,13 @@ import { Grid, GridItem , HStack, Show} from '@chakra-ui/react'
 import NavBar from './components/NavBar'
 import GameGrid from './components/GameGrid'
 import GenresList from './components/GenresList'
-import { useState } from 'react'
-
 import PlatformSelector from './components/PlatformSelector'
 import SortSelector from './components/SortSelector'
 import GameHeading from './components/GameHeading'
 
-export interface GameQuery{
-  genre :number | undefined;
-  platform:number | undefined;
-  sortOrder: string;
-  searchText:string;
-  
-}
+
  
 function App() {
-
-const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
 <Grid 
@@ -33,21 +23,21 @@ const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
 >
 <GridItem area='nav' >
-  <NavBar onSearch={(searchText)=>setGameQuery({...gameQuery,searchText})}/>
+  <NavBar/>
   </GridItem>
 <Show above='lg'>
 <GridItem area='aside' padding={'20px'} marginTop={'30px'}>
-  <GenresList selectedGenreId ={gameQuery.genre} onSelectGenre = {(genre)=> setGameQuery({...gameQuery, genre})}/>
+  <GenresList />
   </GridItem>
 </Show>
 <GridItem area='main'  padding={'40px'}>
-  <GameHeading gameQuery={gameQuery}/>
+  <GameHeading />
   <HStack>
-  <PlatformSelector onSelectPlatform={(platform)=> setGameQuery({...gameQuery, platform})} selectedPlatformId={gameQuery.platform}/>
-  <SortSelector onSelectSortOrder={(sortOrder)=>setGameQuery({...gameQuery, sortOrder})} sortOrder={gameQuery.sortOrder}/>
+  <PlatformSelector />
+  <SortSelector/>
   </HStack>
 
-<GameGrid gameQuery={gameQuery} />
+<GameGrid />
 </GridItem>
 </Grid>
   )
