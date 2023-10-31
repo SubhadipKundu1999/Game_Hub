@@ -8,13 +8,16 @@ const queryClient = new QueryClient()
 import App from './App'
 import './index.css'
 import theme from './theme'
+import { RouterProvider } from 'react-router-dom'
+import appRouter from './router'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
 
     <ChakraProvider theme={theme}>
 
     <QueryClientProvider client={queryClient}>
-    <App />
+
+    <RouterProvider router={appRouter}/>
     <ReactQueryDevtools/>
     </QueryClientProvider>
 

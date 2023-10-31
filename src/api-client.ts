@@ -8,14 +8,13 @@ export interface fetchData<T> {
     results: T[]
 }
 
-const axiosInstance= axios.create({
+export const axiosInstance= axios.create({
     baseURL:"https://api.rawg.io/api",
     params:{
         key: "79f0861735bf46439db0fccd736589f4"
     }
 
 })
-
 
 export  default class APIClient<T>{
 
@@ -25,11 +24,15 @@ export  default class APIClient<T>{
         this.endPoint=endPoint
     }
 
-
     getAll=(config:AxiosRequestConfig)=>{
         return axiosInstance
         .get<fetchData<T>>(this.endPoint,config)
         .then((res)=>res.data)
+    }
+    get=(id:number | string)=>{
+        return axiosInstance
+        .get<T>(this.endPoint+"/"+id)
+        .then((res)=> res.data)
     }
 }
 

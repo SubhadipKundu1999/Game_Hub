@@ -6,12 +6,15 @@ import { GameQuery } from '../strores/gameQueryStore';
 const apiClient = new APIClient<Game>("/games")
  export interface  Game{
     name: string,
+    slug:string,
     id: number,
     background_image: String
     parent_platforms: {platform:Platform}[],
     metacritic:number,
     rating_top:number,
-    page:number
+    page:number,
+    description_raw?: string,
+
 }
 const useGames=(gameQuery:GameQuery)=>
 
