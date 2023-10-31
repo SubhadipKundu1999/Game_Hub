@@ -1,10 +1,10 @@
 import { Grid, GridItem , HStack, Show} from '@chakra-ui/react'
 
-import GameGrid from './components/GameGrid'
-import GenresList from './components/GenresList'
-import PlatformSelector from './components/PlatformSelector'
-import SortSelector from './components/SortSelector'
-import GameHeading from './components/GameHeading'
+import GameGrid from '../components/GameGrid'
+import GenresList from '../components/GenresList'
+import PlatformSelector from '../components/PlatformSelector'
+import SortSelector from '../components/SortSelector'
+import GameHeading from '../components/GameHeading'
 
 
  

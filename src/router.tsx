@@ -1,9 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./Home";
-import GameDetails from "./GameDetails";
+import Home from "./Pages/Home";
+import GameDetails from "./Pages/GameDetails";
 import AppLayout from "./AppLayout";
-
-
 
 const appRouter = createBrowserRouter([
     {

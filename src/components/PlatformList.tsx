@@ -14,11 +14,12 @@ import { IconType } from 'react-icons'
 
 interface Props{
     platforms: Platform[]
+    size?: number
 }
 
 
 
-function PlatformList({platforms}:Props) {
+function PlatformList({platforms, size}:Props) {
 
     const iconMap:{[key:string]:IconType} = {
         pc: FaWindows,
@@ -32,7 +33,7 @@ function PlatformList({platforms}:Props) {
 
   return (
     <HStack>
-       {platforms.map((platform)=> <Icon key={platform.id} as={iconMap[platform.slug]}/> )}
+       {platforms.map((platform)=> <Icon w={size} h={size} key={platform.id} as={iconMap[platform.slug]}/> )}
     </HStack>
   )
 }

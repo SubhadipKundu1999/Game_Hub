@@ -2,8 +2,12 @@ import { useInfiniteQuery, } from '@tanstack/react-query';
 import APIClient, {fetchData }  from '../api-client';
 import { Platform } from './usePlatforms';
 import { GameQuery } from '../strores/gameQueryStore';
-
+import { Genre } from './useGenres';
+interface Devloper{
+   name:string
+}
 const apiClient = new APIClient<Game>("/games")
+
  export interface  Game{
     name: string,
     slug:string,
@@ -14,6 +18,12 @@ const apiClient = new APIClient<Game>("/games")
     rating_top:number,
     page:number,
     description_raw?: string,
+    released? :string
+    background_image_additional?:string
+    playtime?:number
+    genres?:Genre[],
+    developers?: Devloper[],
+    website?: string  | ''
 
 }
 const useGames=(gameQuery:GameQuery)=>
@@ -31,7 +41,8 @@ useInfiniteQuery<fetchData<Game>, Error>({
        parent_platforms:gameQuery.platform,
        ordering:gameQuery.sortOrder,
        search:gameQuery.searchText,
-       page:pageParam
+       page:pageParam,
+      
       }
    }),
    getNextPageParam:(lastPage, allPages)=>{
