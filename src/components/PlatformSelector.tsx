@@ -22,11 +22,11 @@ const {data, error} = usePlatforms();
     <Menu >
         <MenuButton as={Button} rightIcon={<AiOutlineCaretDown/>}>
 
-{sel_platform?.name || 'Platforms'}
+{sel_platform?.name.slice(0,8)  || 'Platforms'}
 
         </MenuButton>
-<MenuList>
-  {/* <MenuItem  onClick={()=>onSelectPlatform(null)} color={'red'}> clear</MenuItem> */}
+<MenuList p={'10px'}  >
+
   {data?.results?.map((platform)=>
    <MenuItem key={platform.id} onClick={()=> selectPlatform(platform.id)}>
      <HStack>

@@ -22,12 +22,12 @@ const currentSortedOrder= sortOrders.find((order)=> order.value=== selectedSortO
 
 
   return (
-    <Box marginBottom={'20px'}>
+    <Box marginBottom={'20px'} >
     <Menu >
         <MenuButton as={Button} rightIcon={<AiOutlineCaretDown/>}>
-           Order By: {currentSortedOrder?.label}
+           Order By: {currentSortedOrder?.label.slice(0,8)}
         </MenuButton>
-<MenuList>
+<MenuList >
     {sortOrders.map((order)=><MenuItem key={order.value} onClick={()=>selectSortOrder(order.value)}>{order.label}</MenuItem>)}
  
 

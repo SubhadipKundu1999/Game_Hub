@@ -19,14 +19,13 @@ function GameGrid() {
 const {data, error,isLoading, fetchNextPage, hasNextPage, isFetchingNextPage} = useGames(gameQuery);
 
 if(error){
-  console.log(error);
+
   return(
   <Box>
   <h1 style={{color:'red'}}>{error.message}</h1>
   </Box>
   )
   }
-  console.log(data);
 
 const fetchedGameCount = data?.pages.reduce((total, page)=> total+ page.results.length,0) || 0
 
@@ -39,14 +38,12 @@ next={()=>fetchNextPage()}
 loader={
 <Spinner/>
 }
-
-
 >
 
-<SimpleGrid columns ={
-  {sm:1, md:2, lg:3}}
+<SimpleGrid columns ={{sm:1, md:2, lg:3}}
  spacing={5}
  marginBottom={10}
+
 >
   {isLoading || error?
   (<>{Skeleton.map(s=> <GameCardSkeleton key={s} /> )}</>) :''}

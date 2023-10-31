@@ -32,14 +32,14 @@ function GameDetails() {
   const [show, setShow] = useState<boolean>(false);
 
   const handleToggle = () => setShow(!show);
-  console.log(game)
+
 
   if (error) return <h1>error.message</h1>
 
   if (isLoading) return <Spinner />;
   return (
 
-    <Box w='100%' p='20'>
+    <Box w='100%' p={{base:4, md:10}}>
       {/* background */}
       <Box backgroundImage={`url(${game.background_image_additional})`}
         backgroundPosition="center"
@@ -60,38 +60,39 @@ function GameDetails() {
         <GridItem >
 
 
-          <HStack spacing={5} marginBottom={10}>
-            <Text fontSize={'20px'}>{game.released}</Text>
+          <HStack spacing={{base:5}} marginBottom={{base:4, md:10}}>
+            <Text fontSize={{basse:'10px', md:'20px'}} whiteSpace={'nowrap'} >{game.released}</Text>
             <PlatformList platforms={game.parent_platforms.map(p => p.platform)} />
-            <Text fontSize={'20px'} >Average Play TIme {game.playtime} hours</Text>
+            <Text fontSize={{basse:'10px', md:'20px'}} >Average Play TIme {game.playtime} hours</Text>
           </HStack>
+
           <Heading fontSize={{ sm: '36px', lg: '72px' }} fontWeight={'700'} lineHeight={{ lg: '74px', sm: '40px' }} marginBottom={10}>
             {game.name}
           </Heading>
 
-          <ButtonGroup variant='outline' spacing='2' w={'100%'} marginBottom={10}>
+          <Box display={'flex'} flexDirection={{base:'column', lg:'row'} } gap={'20px'} w={'100%'} marginBottom={{base:4,}}>
 
-            <Button variant='solid' w='33%' colorScheme='telegram' rightIcon={<IoIosAddCircle size={'50px'} />} h='auto'  >
-              <div style={{ textAlign: 'left' }}>
+            <Button variant='solid' w={{base:'100%', lg:'33%'}} colorScheme='telegram' rightIcon={<IoIosAddCircle    size={'50px'} />} h='auto'  >
+              <div style={{ textAlign: 'left', width:'100%'}}>
                 <p>Add to</p>
                 <Heading fontSize={'lg'}>MY GAMES</Heading>
               </div>
             </Button>
 
-            <Button variant='outline' w='33%' colorScheme='telegram' rightIcon={<AiOutlineGift size={'50px'} />} h='auto'>
-              <div style={{ textAlign: 'left' }}>
+            <Button variant='outline' w={{base:'100%', lg:'33%'}} colorScheme='telegram' rightIcon={<AiOutlineGift size={'50px'} />} h='auto'>
+              <div style={{ textAlign: 'left', width:'100%'}}>
                 <p>Add to</p>
                 <Heading fontSize={'lg'}>Wish List</Heading>
               </div>
 
             </Button>
-            <Button variant='ghost' w='33%' colorScheme='telegram' rightIcon={<AiOutlineFolderOpen size={'50px'} />} h='auto'>
-              <div style={{ textAlign: 'left' }}>
+            <Button variant='ghost' w={{base:'100%', lg:'33%'}}colorScheme='telegram' rightIcon={<AiOutlineFolderOpen size={'50px'} />} h='auto'>
+              <div style={{ textAlign: 'left', width:'100%'}}>
                 <p>Save to</p>
                 <Heading fontSize={'lg'}>MY Collectoion</Heading>
               </div>
             </Button>
-          </ButtonGroup>
+          </Box>
 
           <Text>Click to Rate</Text>
 
@@ -118,7 +119,7 @@ function GameDetails() {
 
           {/* game other details */}
           <Grid
-            templateRows='repeat(3, 1fr)'
+            templateRows='repeat(2, 1fr)'
             templateColumns='repeat(2, 1fr)'
             gap={4}
           >
@@ -155,7 +156,7 @@ function GameDetails() {
           <a href={game.website}>{game.website}</a>
         </GridItem>
 
-        <GridItem px={10}>
+        <GridItem px={{base:'2', md:'10'}}>
           <GameTailer gameId={game.id} />
           <GameScreenshots gameId={game.id} />
         </GridItem>

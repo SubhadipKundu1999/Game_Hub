@@ -6,7 +6,7 @@ import { GridItem, Heading, Image, SimpleGrid } from '@chakra-ui/react';
  }
 function GameScreenshots({gameId}:Props) {
  const{ data, error} = useScreenshots(gameId);
-console.log(data?.results)
+
   return (
   
     <>

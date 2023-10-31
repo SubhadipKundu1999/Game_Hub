@@ -16,8 +16,9 @@ if(!video) return null;
   return (
    <Box>
   <video controls
-   src={`${video.data[480]}`} 
+  //  src={`${video.data[480]}`} 
   poster={video.preview}
+  width={'100%'}
   autoPlay
 muted
 />
