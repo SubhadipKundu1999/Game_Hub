@@ -14,11 +14,12 @@ function Home() {
 <Grid 
  templateAreas={{
   base: `"main"`,
+  md: ` "aside main" `,
   lg:`  "aside main" `
   } } 
   templateColumns={{
     base: "1fr",
-  md:'1fr',
+  md:'250px 1fr',
   lg:'250px 1fr'
   }}
 >
