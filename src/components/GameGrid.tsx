@@ -40,7 +40,7 @@ loader={
 }
 >
 
-<SimpleGrid columns ={{sm:1, md:2, lg:3}}
+<SimpleGrid columns ={{sm:1,md:2,lg:3}}
  spacing={5}
  marginBottom={10}
 

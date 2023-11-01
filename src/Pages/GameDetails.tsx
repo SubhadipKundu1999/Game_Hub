@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 
 import { AiOutlineGift, AiOutlineFolderOpen } from 'react-icons/ai';
 import { IoIosAddCircle } from 'react-icons/io';
@@ -58,7 +58,8 @@ function GameDetails() {
 
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <GridItem >
-
+         
+         <Text opacity={0.4} fontSize={'10px'}>Home/Games/{game.name}</Text>
 
           <HStack spacing={{base:5}} marginBottom={{base:4, md:10}}>
             <Text fontSize={{basse:'10px', md:'20px'}} whiteSpace={'nowrap'} >{game.released}</Text>

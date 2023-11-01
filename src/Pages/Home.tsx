@@ -13,16 +13,17 @@ function Home() {
   return (
 <Grid 
  templateAreas={{
-  base: `"main" `,
+  base: `"main"`,
   lg:`  "aside main" `
   } } 
   templateColumns={{
     base: "1fr",
-    md:"250px  1fr"
+  md:'1fr',
+  lg:'250px 1fr'
   }}
 >
 
-<Show above='lg'>
+<Show above='md'>
 <GridItem area='aside' padding={'20px'} marginTop={'30px'}>
   <GenresList />
   </GridItem>
