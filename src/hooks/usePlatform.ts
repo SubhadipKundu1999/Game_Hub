@@ -8,6 +8,7 @@ const platform = useGameQueryStore(store=> store.gameQuery.platform)
     const { data: platforms } = usePlatforms()
 
     return (platforms?.results?.find((element) => element.id === platform))
+
 }
 
 
